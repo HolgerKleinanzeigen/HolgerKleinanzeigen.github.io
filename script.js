@@ -144,7 +144,7 @@ function set_dice(dice_row, dice_nr, dice_face, exp) {
   }
   else {
     //document.getElementById("i_"+dice_row+"_"+dice_nr).src = "resources/Dice_"+exp+"_N"+dice_face+"_"+seed+".svg";
-    document.getElementById("i_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_face+"_"+rnd];
+    document.getElementById("i_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_face+"_"+seed];
   }
 }
 
