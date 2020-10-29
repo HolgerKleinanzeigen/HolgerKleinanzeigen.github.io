@@ -19,6 +19,8 @@ function roll_dice(dice_row, dice_nr, dice_face, exp) {
   return rnd;
 }
 
+
+
 function roll_row(nr_row) {
   
   var roll = [6];
