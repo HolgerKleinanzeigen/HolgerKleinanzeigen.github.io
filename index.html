@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+
+  <title>Holger und Susis Railroad Spiel</title>
+  <meta name="description" content="HundS Railroad">
+  <meta name="author" content="HolgerKleinanzeigen">
+
+  <link rel="stylesheet" href="styles.css?v=1.0">
+
+</head>
+
+<div class="wrapper">
+
+  <div class="header_table">
+    <div class="header_row_l">
+    <h1>Holger und Susis Railroad Ink.</h1>  
+  
+    <form>
+      <label for="game">Choose an expansion:
+        <select name="expansion" id="sel_expansion" size="1" class="sorting">
+          <option value="normal">Normal</option>
+          <option value="engineer_renovation">Engineer Renovation</option>
+          <option value="engineer_separation_1">Engineer Separation 1</option>
+          <option value="engineer_separation_2">Engineer Separation 2</option>
+          <option value="engineer_special_1">Engineer Special 1</option>
+          <option value="engineer_special_2">Engineer Special 2</option>
+          <option value="engineer_special_3">Engineer Special 3</option>
+          <option value="desert">Desert</option>
+          <option value="canyon_1">Canyon 1</option>
+          <option value="canyon_2">Canyon 2</option>
+          <option value="river">River</option>
+          <option value="forest">Forest</option>
+          <option value="trail">Trail</option>
+        </select>
+
+        <div class="button-group">
+          <button type="button" id="roll_goal_1">Roll Goal 1</button> 
+          <button type="button" id="roll_goal_2">Roll Goal 2</button>
+          <button type="button" id="roll_goal_3">Roll Goal 3</button> 
+          <button type="button" id="roll_goal_4">Roll Goal 4</button>
+        </div> <br>
+        Goal 1:  <output id="goal_1"></output> <br> 
+        Goal 2:  <output id="goal_2"></output> <br> 
+        Goal 3:  <output id="goal_3"></output> <br> 
+        Goal 4:  <output id="goal_4"></output> <br> <br>
+        Round limit: <output id="round_limit"></output>  
+      </label>
+    </form>
+    
+    </div>
+    <div class="header_row_r">
+    <h1> <br> <br> </h1>  
+    <form>
+        <label for="header_2"> Use seed: <input type="checkbox" id="use_seed" name="Seed" value="0"></p>
+          Seed: <input id="seed" type="number" value="100" style="width:80px">
+          <button type="button_reset" id="reset">Reset all</button> 
+        </label>
+      </form>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------------------- -->
+    <div class="row">
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    <form>
+      <h3>Round 1</h3>
+      <button type="button" id="roll_dice_r1">Roll</button>
+      <p> <img id="i_1_1" row="1" nr="1" src="resources/Dice_Preset_1.svg" alt="Dice 1_1"> </p>
+      <p> <img id="i_1_2" row="1" nr="2" src="resources/Dice_Preset_2.svg" alt="Dice 1_2"> </p>
+      <p> <img id="i_1_3" row="1" nr="3" src="resources/Dice_Preset_3.svg" alt="Dice 1_3"> </p>
+      <p> <img id="i_1_4" row="1" nr="4" src="resources/Dice_Preset_4.svg" alt="Dice 1_4"> </p>
+      <p> <img id="i_1_5" row="1" nr="5" src="resources/Dice_Preset_empty.svg" alt="Dice 1_5"> </p>
+      <p> <img id="i_1_6" row="1" nr="6" src="resources/Dice_Preset_empty.svg" alt="Dice 1_6"> </p>
+      Roll:  <output id="row_1"></output> <br> 
+      <button type="button" id="set_row_1">Set</button>
+      <input type="number" id="in_row_1" name="in_row_1"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 2</h3>
+      <button type="button" id="roll_dice_r2">Roll</button>
+      <p> <img id="i_2_1" row="2" nr="1" src="resources/Dice_Preset_empty.svg" alt="Dice 2_1"> </p>
+      <p> <img id="i_2_2" row="2" nr="2" src="resources/Dice_Preset_empty.svg" alt="Dice 2_2"> </p>
+      <p> <img id="i_2_3" row="2" nr="3" src="resources/Dice_Preset_empty.svg" alt="Dice 2_3"> </p>
+      <p> <img id="i_2_4" row="2" nr="4" src="resources/Dice_Preset_empty.svg" alt="Dice 2_4"> </p>
+      <p> <img id="i_2_5" row="2" nr="5" src="resources/Dice_Preset_empty.svg" alt="Dice 2_5"> </p>
+      <p> <img id="i_2_6" row="2" nr="6" src="resources/Dice_Preset_empty.svg" alt="Dice 2_6"> </p>
+      Roll:  <output id="row_2"></output> <br> 
+      <button type="button" id="set_row_2">Set</button>
+      <input type="number" id="in_row_2" name="in_row_2"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 3</h3>
+    	<button type="button" id="roll_dice_r3">Roll</button>
+      <p> <img id="i_3_1" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 3_1"> </p>
+      <p> <img id="i_3_2" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 3_2"> </p>
+      <p> <img id="i_3_3" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 3_3"> </p>
+      <p> <img id="i_3_4" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 3_4"> </p>
+      <p> <img id="i_3_5" src="resources/Dice_Preset_empty.svg" alt="Dice 3_5"> </p>
+      <p> <img id="i_3_6" src="resources/Dice_Preset_empty.svg" alt="Dice 3_6"> </p>
+      Roll:  <output id="row_3"></output> <br> 
+      <button type="button" id="set_row_3">Set</button>
+      <input type="number" id="in_row_3" name="in_row_3"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 4</h3>
+    	<button type="button" id="roll_dice_r4">Roll</button>
+      <p> <img id="i_4_1" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 4_1"> </p>
+      <p> <img id="i_4_2" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 4_2"> </p>
+      <p> <img id="i_4_3" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 4_3"> </p>
+      <p> <img id="i_4_4" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 4_4"> </p>
+      <p> <img id="i_4_5" src="resources/Dice_Preset_empty.svg" alt="Dice 4_5"> </p>
+      <p> <img id="i_4_6" src="resources/Dice_Preset_empty.svg" alt="Dice 4_6"> </p>
+      Roll:  <output id="row_4"></output> <br> 
+      <button type="button" id="set_row_4">Set</button>
+      <input type="number" id="in_row_4" name="in_row_4"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 5</h3>
+    	<button type="button" id="roll_dice_r5">Roll</button>
+      <p> <img id="i_5_1" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 5_1"> </p>
+      <p> <img id="i_5_2" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 5_2"> </p>
+      <p> <img id="i_5_3" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 5_3"> </p>
+      <p> <img id="i_5_4" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 5_4"> </p>
+      <p> <img id="i_5_5" src="resources/Dice_Preset_empty.svg" alt="Dice 5_5"> </p>
+      <p> <img id="i_5_6" src="resources/Dice_Preset_empty.svg" alt="Dice 5_6"> </p>
+      Roll:  <output id="row_5"></output> <br> 
+      <button type="button" id="set_row_5">Set</button>
+      <input type="number" id="in_row_5" name="in_row_5"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 6</h3>
+    	<button type="button" id="roll_dice_r6">Roll</button>
+      <p> <img id="i_6_1" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 6_1"> </p>
+      <p> <img id="i_6_2" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 6_2"> </p>
+      <p> <img id="i_6_3" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 6_3"> </p>
+      <p> <img id="i_6_4" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 6_4"> </p>
+      <p> <img id="i_6_5" src="resources/Dice_Preset_empty.svg" alt="Dice 6_5"> </p>
+      <p> <img id="i_6_6" src="resources/Dice_Preset_empty.svg" alt="Dice 6_6"> </p>
+      Roll:  <output id="row_6"></output> <br> 
+      <button type="button" id="set_row_6">Set</button>
+      <input type="number" id="in_row_6" name="in_row_6"> 
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Round 7</h3>
+    	<button type="button" id="roll_dice_r7">Roll</button>
+      <p> <img id="i_7_1" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 7_1"> </p>
+      <p> <img id="i_7_2" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 7_2"> </p>
+      <p> <img id="i_7_3" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 7_3"> </p>
+      <p> <img id="i_7_4" src="resources/Dice_Preset_empty.svg" alt="Dice Normal 7_4"> </p>
+      <p> <img id="i_7_5" src="resources/Dice_Preset_empty.svg" alt="Dice 7_5"> </p>
+      <p> <img id="i_7_6" src="resources/Dice_Preset_empty.svg" alt="Dice 7_6"> </p>
+      <p align="left">
+        Roll:  <output id="row_7"></output> <br> 
+        <button type="button" id="set_row_7">Set</button>
+        <input type="number" id="in_row_7" name="in_row_7"> 
+      </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+  </div>
+<!-- <output id="resu"></output> -->
+</div>
+
+<script src="script.js"></script>
+</html>
+
+
+
+

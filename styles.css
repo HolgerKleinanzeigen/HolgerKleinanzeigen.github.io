@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width:             90vw;
+  min-width:        860px;
+  max-width:       2000px;
+  border-spacing:       0; 
+  margin:        1em auto;
+}
+
+.header{
+  background-color: #ffffff;
+  color:            #000000;
+  padding:             15px;
+  width:              860px;
+}
+
+.header_table{
+  background-color: #ffffff;
+  color:            #000000;
+  display:            table;
+  margin:          1em auto;
+}
+
+.header_row_l{
+  float:           left;
+  padding:         15px;
+  text-align:      left;
+  border-spacing:  10px;
+  vertical-align:   top;
+  display:   table-cell;
+  width:          600px;
+}
+
+.header_row_r{
+  float:           left;
+  padding:         15px;
+  text-align:      left;
+  border-spacing:  10px;
+  vertical-align:   top;
+  display:   table-cell;
+  width:          260px;
+}
+
+.row{
+  background-color: #ffffff;
+  color:            #000000;
+  display:            table;
+  margin:          1em auto;
+}
+
+.col {
+  float:           left;
+  padding:         15px;
+  text-align:      left;
+  border-spacing:  10px;
+  vertical-align:   top;
+  display:   table-cell;
+  width:          120px;
+}
+
+.button-group {
+         display: flex;
+      }
+      .button-group button {
+         font-size: 0.8rem;
+         border:       1px;
+         margin:       3px;
+         padding:      3px;
+      }
+
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+label,
+button {
+	display: block;
+	margin: 0.7em;
+}
+button_reset {
+	display: block;
+	margin: 2em;
+  background-color: #fefe11;
+  color: #000000;
+}
+
+input[type="number"] {
+   width: 80px;
+}
+
+#sorting label{
+ display : inline;
+ padding-right : 4px;
+}
+
+#sorting select {
+    display: block;
+    font-size: 0.4em;
+    padding: .6em 1.4em .5em .8em;
+    width: 200px;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #fff;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -webkit-appearance: none;
+    appearance: none;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
