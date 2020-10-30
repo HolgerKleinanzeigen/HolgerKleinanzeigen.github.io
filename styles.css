@@ -65,11 +65,20 @@
          display: flex;
       }
       .button-group button {
-         font-size: 0.8rem;
-         border:       1px;
-         margin:       3px;
-         padding:      3px;
+         font-size:         0.8rem;
+         border:               1px;
+         margin:               2px;
+         padding:              3px;
+         background-color: #000000;
+         color:            #ffffff;
+         border: 2px solid #ffffff;
       }
+      
+button {
+   background-color: #000000;
+   color:            #ffffff;
+   border: 2px solid #ffffff;
+}
 
 
 html {
