@@ -21,7 +21,7 @@ function roll_dice(dice_row, dice_nr, dice_face, exp) {
 
 
 
-function roll_row(nr_row) {
+async function roll_row(nr_row) {
   
   var roll = [6];
   
@@ -29,10 +29,15 @@ function roll_row(nr_row) {
     document.getElementById("i_"+nr_row+"_"+k).src = "resources/Dice_Preset_empty.svg";
   }
 
+  await Sleep(300);
   roll[0] = roll_dice(nr_row,1,1,"Normal");
+  await Sleep(300);
   roll[1] = roll_dice(nr_row,2,1,"Normal");
+  await Sleep(300);
   roll[2] = roll_dice(nr_row,3,2,"Normal");
+  await Sleep(300);
   roll[3] = roll_dice(nr_row,4,3,"Normal");
+  await Sleep(300);
   roll[4] = "0";
   roll[5] = "0";
   
@@ -52,22 +57,22 @@ function roll_row(nr_row) {
     case "engineer_special_3":
       roll[3] = roll_dice(nr_row,4,2,"Engineer"); break;
     case "desert":
-      roll[4] = roll_dice(nr_row,5,1,"Desert");
+      roll[4] = roll_dice(nr_row,5,1,"Desert");   await Sleep(300);
       roll[5] = roll_dice(nr_row,6,1,"Desert");   break;
     case "canyon_1":
-      roll[4] = roll_dice(nr_row,5,1,"Canyon");
+      roll[4] = roll_dice(nr_row,5,1,"Canyon");   await Sleep(300);
       roll[5] = roll_dice(nr_row,6,1,"Canyon");   break;
     case "canyon_2":
-      roll[4] = roll_dice(nr_row,5,2,"Canyon");
+      roll[4] = roll_dice(nr_row,5,2,"Canyon");   await Sleep(300);
       roll[5] = roll_dice(nr_row,6,2,"Canyon");   break;
     case "river":
-      roll[4] = roll_dice(nr_row,5,1,"River");
+      roll[4] = roll_dice(nr_row,5,1,"River");    await Sleep(300);
       roll[5] = roll_dice(nr_row,6,1,"River");    break;
     case "forest":
-      roll[4] = roll_dice(nr_row,5,1,"Forest");
+      roll[4] = roll_dice(nr_row,5,1,"Forest");   await Sleep(300);
       roll[5] = roll_dice(nr_row,6,1,"Forest");   break;
     case "trail":
-      roll[4] = roll_dice(nr_row,5,1,"Trail");
+      roll[4] = roll_dice(nr_row,5,1,"Trail");    await Sleep(300);
       roll[5] = roll_dice(nr_row,6,1,"Trail");    break;
       
     default: break;
@@ -149,26 +154,6 @@ function set_dice(dice_row, dice_nr, dice_face, exp) {
     document.getElementById("i_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_face+"_"+seed];
   }
 }
-
-function roll_goal_1() {
-  document.getElementById("goal_1").textContent = get_goal();
-  set_round_limit();
-}
-
-function roll_goal_2() {
-  document.getElementById("goal_2").textContent = get_goal();
-  set_round_limit();
-}
-
-function roll_goal_3() {
-  document.getElementById("goal_3").textContent = get_goal();
-  set_round_limit();
-}
-
-function roll_goal_4() {
-  document.getElementById("goal_4").textContent = get_goal_special();
-  set_round_limit();
-}
 function rand_nr(cnt, seed) {
   return (Math.floor( mulberry32(seed) * cnt ) + 1);
 }
@@ -194,37 +179,70 @@ function mulberry32(a) {
   return ((t ^ t >>> 14) >>> 0) / 4294967296;
 }
 
-function get_goal() { 
-  var goals = ["6 highways",
-               "6 highways",
-               "6 railways",
-               "6 railways",
-               "5 highways + 5 railways",
-               
-               "3 exits",              
-               "5 exits",               
-               "connect exits on opposing sides",     
-               "connect exits on 3 differnt sides",   
-               
-               "5 dices in central space",       
-               
-               "3x3 routes",                 
-               "1 route in each corner",     
-               "7 routes in a row or coloumn",
-               
-               "3 special routes used",
+function roll_goal_1() {
+  document.getElementById("goal_1").textContent = get_goal(1);
+  set_round_limit();
+}
 
-               "1 circle",                 
+function roll_goal_2() {
+  document.getElementById("goal_2").textContent = get_goal(2);
+  set_round_limit();
+}
 
-               "1 village, 1 factory, 1 university",  
-               "2 village, 2 factory, 2 university", 
-               "4 stations linked",              
-               "3 villages",
-               
-               "6 highways"
-               ];
+function roll_goal_3() {
+  
+  var expansion_lg = document.getElementById('sel_expansion').value;
+  
+  if (expansion_lg != "normal"){
+    document.getElementById("goal_3").textContent = get_goal_special();
+  }
+  else {
+    document.getElementById("goal_3").textContent = get_goal(3);
+  }
+  set_round_limit();
+}
 
-  return goals[(Math.floor( Math.random() * goals.length)+1)];
+// function roll_goal_4() {
+  // document.getElementById("goal_4").textContent = get_goal_special();
+  // set_round_limit();
+// }
+
+function get_goal(num) { 
+
+  var goals_1 = ["6 highways",
+                 "6 railways",
+                 "6 railways",
+                 "5 highways + 5 railways"];
+
+  var goals_2 = ["3 exits connected",              
+                 "5 exits connected",               
+                 "connect exits on opposing sides",     
+                 "connect exits on 3 differnt sides",
+                 "5 dices in central space",
+                 "3x3 routes",                 
+                 "1 route in each corner",     
+                 "7 routes in a row or coloumn"];
+
+  var goals_3 = ["3 special routes used",
+                 "1 circle",
+                 "1 village, 1 factory, 1 university",  
+                 "2 village, 2 factory, 2 university", 
+                 "4 stations linked",              
+                 "3 villages"
+                 ];
+
+  
+  switch (num) {
+    case 1:
+      return goals_1[(Math.floor( Math.random() * goals_1.length))]; break;
+    case 2:
+      return goals_2[(Math.floor( Math.random() * goals_2.length))]; break;
+    case 3:
+      return goals_3[(Math.floor( Math.random() * goals_3.length))]; break;
+
+    default: return 0; break;
+  }
+
 }
 
 function get_goal_special() { 
@@ -264,7 +282,7 @@ function get_goal_special() {
     return goal_trail[(Math.floor( Math.random() * goal_trail.length))];
   }
   else {
-    return (" ");
+    return get_goal(3);
   }
 }
 
@@ -295,6 +313,10 @@ function reset() {
   
 }
 
+function Sleep(milliseconds) {
+ return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
 document.getElementById("roll_dice_r1").onclick  = function(){roll_row(1)};
 document.getElementById("roll_dice_r2").onclick  = function(){roll_row(2)};
 document.getElementById("roll_dice_r3").onclick  = function(){roll_row(3)};
@@ -314,7 +336,7 @@ document.getElementById("set_row_7").onclick  = function(){set_row(7)};
 document.getElementById("roll_goal_1").onclick   = roll_goal_1;
 document.getElementById("roll_goal_2").onclick   = roll_goal_2;
 document.getElementById("roll_goal_3").onclick   = roll_goal_3;
-document.getElementById("roll_goal_4").onclick   = roll_goal_4;
+//document.getElementById("roll_goal_4").onclick   = roll_goal_4;
 document.getElementById("reset").onclick         = reset;
 
 
