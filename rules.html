@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+
+  <title>Holger und Susis Railroad Spiel</title>
+  <meta name="description" content="HundS Railroad">
+  <meta name="author" content="HolgerKleinanzeigen">
+
+  <link rel="stylesheet" href="styles.css?v=1.0">
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<div class="wrapper">
+
+  <div class="header_table">
+    <div class="header_row_l">
+    <h1>Holger und Susis Railroad Ink.</h1>  
+  
+    <form>
+      <label for="game">Choose an expansion:
+        <select name="expansion" id="sel_expansion_rules" size="1" class="sorting">
+          <option value="normal">Normal</option>
+          <option value="engineer_renovation">Engineer Renovation</option>
+          <option value="engineer_separation">Engineer Separation </option>
+          <option value="engineer_special">Engineer Special</option>
+          <option value="desert">Desert</option>
+          <option value="canyon_1">Canyon 1</option>
+          <option value="canyon_2">Canyon 2</option>
+          <option value="river">River</option>
+          <option value="forest">Forest</option>
+          <option value="trail">Trail</option>
+        </select>
+
+        <div class="button-group">
+          <button type="button" id="show_dice">Show Dice</button> 
+        </div> <br>
+      </label>
+    </form>
+    
+    </div>
+    <div class="header_row_r">
+    <h1> <br> <br> </h1>  
+    <form>
+        <label for="header_2">
+        </label>
+      </form>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------------------- -->
+    <div class="row">
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    <form>
+      <h3>Side 1</h3>
+      <p> <img id="r_1_1" src="resources/Dice_Preset_empty.svg" alt="Dice r1_1"> </p>
+      <p> <img id="r_1_2" src="resources/Dice_Preset_empty.svg" alt="Dice r1_2"> </p>
+      <p> <img id="r_1_3" src="resources/Dice_Preset_empty.svg" alt="Dice r1_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Side 2</h3>
+      <p> <img id="r_2_1" src="resources/Dice_Preset_empty.svg" alt="Dice r2_1"> </p>
+      <p> <img id="r_2_2" src="resources/Dice_Preset_empty.svg" alt="Dice r2_2"> </p>
+      <p> <img id="r_2_3" src="resources/Dice_Preset_empty.svg" alt="Dice r2_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Side 3</h3>
+      <p> <img id="r_3_1" src="resources/Dice_Preset_empty.svg" alt="Dice r3_1"> </p>
+      <p> <img id="r_3_2" src="resources/Dice_Preset_empty.svg" alt="Dice r3_2"> </p>
+      <p> <img id="r_3_3" src="resources/Dice_Preset_empty.svg" alt="Dice r3_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Side 4</h3>
+      <p> <img id="r_4_1" src="resources/Dice_Preset_empty.svg" alt="Dice r4_1"> </p>
+      <p> <img id="r_4_2" src="resources/Dice_Preset_empty.svg" alt="Dice r4_2"> </p>
+      <p> <img id="r_4_3" src="resources/Dice_Preset_empty.svg" alt="Dice r4_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Side 5</h3>
+      <p> <img id="r_5_1" src="resources/Dice_Preset_empty.svg" alt="Dice r5_1"> </p>
+      <p> <img id="r_5_2" src="resources/Dice_Preset_empty.svg" alt="Dice r5_2"> </p>
+      <p> <img id="r_5_3" src="resources/Dice_Preset_empty.svg" alt="Dice r5_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+    <div class="col">
+    
+	  <form>
+      <h3>Side 6</h3>
+      <p> <img id="r_6_1" src="resources/Dice_Preset_empty.svg" alt="Dice r6_1"> </p>
+      <p> <img id="r_6_2" src="resources/Dice_Preset_empty.svg" alt="Dice r6_2"> </p>
+      <p> <img id="r_6_3" src="resources/Dice_Preset_empty.svg" alt="Dice r6_3"> </p>
+	  </form>
+    
+    </div>
+    <!-- ------------------------------------------------------------------------------------- -->
+  </div>
+
+</div>
+
+<script src="script_rules.js"></script>
+</html>
+
+
+
+

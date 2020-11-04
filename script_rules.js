@@ -1,346 +1,108 @@
 function roll_dice(dice_row, dice_nr, dice_face, exp) {
 
-  var seed = 1;
-  var rnd = 1;
-  var use_seed = document.getElementById("use_seed").checked;
-
-  seed = document.getElementById("seed").value;
-
-  if (use_seed == 1) {
-    rnd = rand_nr(6, (seed+dice_row+dice_nr+dice_face));
-  }
-  else {
-    rnd = (Math.floor( Math.random() * 6 ) + 1);
-  }
-  // document.getElementById("i_"+dice_row+"_"+dice_nr).src = "resources/Dice_"+exp+"_N"+dice_face+"_"+rnd+".svg";
-  // document.getElementById("i_"+dice_row+"_"+dice_nr).data = "data:image/svg+xml;base64," + object(Dice_+exp+"_N"+dice_face+"_"+rnd);
-  document.getElementById("i_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_face+"_"+rnd];
+  document.getElementById("r_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_nr+"_"+dice_face];
   
-  return rnd;
+  return 0;
 }
 
 
 
-async function roll_row(nr_row) {
+async function show_dice(nr_row) {
   
-  var roll = [6];
-  
-  for (k = 1; k <= 6; k++) {
-    document.getElementById("i_"+nr_row+"_"+k).src = "resources/Dice_Preset_empty.svg";
+  for (i = 1; i <= 3; i++) {
+    for (k = 1; k <= 6; k++) {
+      document.getElementById("r_"+k+"_"+i).src = "resources/Dice_Preset_empty.svg";
+    }
   }
 
-  await Sleep(100);
-  roll[0] = roll_dice(nr_row,1,1,"Normal");
-  await Sleep(100);
-  roll[1] = roll_dice(nr_row,2,1,"Normal");
-  await Sleep(100);
-  roll[2] = roll_dice(nr_row,3,2,"Normal");
-  await Sleep(100);
-  roll[3] = roll_dice(nr_row,4,3,"Normal");
-  await Sleep(100);
-  roll[4] = "0";
-  roll[5] = "0";
-  
-  var expansion = document.getElementById('sel_expansion').value;
+  var expansion = document.getElementById('sel_expansion_rules').value;
   
   switch (expansion) {
+    case "normal":
+      for (i = 1; i <= 3; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Normal");
+        }
+      }
+      break;
     case "engineer_renovation":
-      roll[4] = roll_dice(nr_row,5,1,"Engineer"); break;
-    case "engineer_separation_1":
-      roll[1] = roll_dice(nr_row,2,2,"Engineer"); break;
-    case "engineer_separation_2":
-      roll[2] = roll_dice(nr_row,3,3,"Engineer"); break;
-    case "engineer_special_1":
-      roll[1] = roll_dice(nr_row,2,2,"Engineer"); break;
-    case "engineer_special_2":
-      roll[2] = roll_dice(nr_row,3,2,"Engineer"); break;
-    case "engineer_special_3":
-      roll[3] = roll_dice(nr_row,4,2,"Engineer"); break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Engineer");
+        }
+      }
+      break;
+    case "engineer_separation":
+      for (i = 2; i <= 2; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Engineer");
+        }
+      }
+      break;
+
+    case "engineer_special":
+      for (i = 3; i <= 3; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Engineer");
+        }
+      }
+      break;
+
     case "desert":
-      roll[4] = roll_dice(nr_row,5,1,"Desert");   await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,1,"Desert");   break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Desert");
+        }
+      }
+      break;
     case "canyon_1":
-      roll[4] = roll_dice(nr_row,5,1,"Canyon");   await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,1,"Canyon");   break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Canyon");
+        }
+      }
+      break;
     case "canyon_2":
-      roll[4] = roll_dice(nr_row,5,2,"Canyon");   await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,2,"Canyon");   break;
+      for (i = 2; i <= 2; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Canyon");
+        }
+      }
+      break;
     case "river":
-      roll[4] = roll_dice(nr_row,5,1,"River");    await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,1,"River");    break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"River");
+        }
+      }
+      break;
     case "forest":
-      roll[4] = roll_dice(nr_row,5,1,"Forest");   await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,1,"Forest");   break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Forest");
+        }
+      }
+      break;
     case "trail":
-      roll[4] = roll_dice(nr_row,5,1,"Trail");    await Sleep(100);
-      roll[5] = roll_dice(nr_row,6,1,"Trail");    break;
+      for (i = 1; i <= 1; i++) {
+        for (k = 1; k <= 6; k++) {
+            roll_dice(k,i,k,"Trail");
+        }
+      }
+      break;
       
     default: break;
   }
-  
-  document.getElementById("row_"+nr_row).value = ''.concat(roll[0],roll[1],roll[2],roll[3],roll[4],roll[5]);
   
 } 
 
-function set_row(nr_row) {
-  
-  for (k = 1; k <= 6; k++) {
-    document.getElementById("i_"+nr_row+"_"+k).src = "resources/Dice_Preset_empty.svg";
-  }
-  
-  set_dice(nr_row,1,1,"Normal");
-  set_dice(nr_row,2,1,"Normal");  
-  set_dice(nr_row,3,2,"Normal");  
-  set_dice(nr_row,4,3,"Normal");
-
-  var expansion = document.getElementById('sel_expansion').value;
-  
-  switch (expansion) {
-    case "engineer_renovation":
-      set_dice(nr_row,5,1,"Engineer");  break;
-    case "engineer_separation_1":
-      set_dice(nr_row,2,2,"Engineer");  break;
-    case "engineer_separation_2":
-      set_dice(nr_row,3,3,"Engineer");  break;
-    case "engineer_special_1":
-      set_dice(nr_row,2,2,"Engineer");  break;
-    case "engineer_special_2":
-       set_dice(nr_row,3,2,"Engineer"); break;
-    case "engineer_special_3":
-      set_dice(nr_row,4,2,"Engineer");  break;
-    case "desert":
-      set_dice(nr_row,5,1,"Desert");
-      set_dice(nr_row,6,1,"Desert");    break;
-    case "canyon_1":
-      set_dice(nr_row,5,1,"Canyon");
-      set_dice(nr_row,6,1,"Canyon");    break;
-    case "canyon_2":
-      set_dice(nr_row,5,2,"Canyon");
-      set_dice(nr_row,6,2,"Canyon");    break;
-    case "river":
-      set_dice(nr_row,5,1,"River");
-      set_dice(nr_row,6,1,"River");     break;
-    case "forest":
-      set_dice(nr_row,5,1,"Forest");
-      set_dice(nr_row,6,1,"Forest");    break;
-    case "trail":
-      set_dice(nr_row,5,1,"Trail");
-      set_dice(nr_row,6,1,"Trail");     break;
-      
-    default: break;
-  }
-  
-}
-  
-
-function set_dice(dice_row, dice_nr, dice_face, exp) {
-  
-  var seed_full = document.getElementById("in_row_"+dice_row).value;
-  var seed = 0;
-
-  switch (dice_nr) {
-    case 6: seed = Math.floor((seed_full / 1) % 10);       break;
-    case 5: seed = Math.floor((seed_full / 10) % 10);      break;
-    case 4: seed = Math.floor((seed_full / 100) % 10);     break;
-    case 3: seed = Math.floor((seed_full / 1000) % 10);    break;
-    case 2: seed = Math.floor((seed_full / 10000) % 10);   break;
-    case 1: seed = Math.floor((seed_full / 100000) % 10);  break;
-  }
-
-  if (seed == 0) {
-  }
-  else {
-    //document.getElementById("i_"+dice_row+"_"+dice_nr).src = "resources/Dice_"+exp+"_N"+dice_face+"_"+seed+".svg";
-    document.getElementById("i_"+dice_row+"_"+dice_nr).src = "data:image/svg+xml;base64,"+this["Dice_"+exp+"_N"+dice_face+"_"+seed];
-  }
-}
-function rand_nr(cnt, seed) {
-  return (Math.floor( mulberry32(seed) * cnt ) + 1);
-}
- 
-function jsf32(a, b, c, d) {
-
-  a |= 0; b |= 0; c |= 0; d |= 0;
-  var t = a - (b << 27 | b >>> 5) | 0;
-  a = b ^ (c << 17 | c >>> 15);
-  b = c + d | 0;
-  c = d + t | 0;
-  d = a + t | 0;
-
-  return ((d >>> 0) / 4294967296);
+function show(){
+  show_dice(1);
+  show_dice(2);
+  show_dice(3);
 }
 
-function mulberry32(a) {
-  
-  var t = a += 0x6D2B79F5;
-  t = Math.imul(t ^ t >>> 15, t | 1);
-  t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-  
-  return ((t ^ t >>> 14) >>> 0) / 4294967296;
-}
-
-function roll_goal_1() {
-  document.getElementById("goal_1").textContent = get_goal(1);
-  set_round_limit();
-}
-
-function roll_goal_2() {
-  document.getElementById("goal_2").textContent = get_goal(2);
-  set_round_limit();
-}
-
-function roll_goal_3() {
-  
-  var expansion_lg = document.getElementById('sel_expansion').value;
-  
-  if (expansion_lg != "normal"){
-    document.getElementById("goal_3").textContent = get_goal_special();
-  }
-  else {
-    document.getElementById("goal_3").textContent = get_goal(3);
-  }
-  set_round_limit();
-}
-
-// function roll_goal_4() {
-  // document.getElementById("goal_4").textContent = get_goal_special();
-  // set_round_limit();
-// }
-
-function get_goal(num) { 
-
-  var goals_1 = ["6 highways",
-                 "6 railways",
-                 "6 railways",
-                 "5 highways + 5 railways"];
-
-  var goals_2 = ["3 exits connected",              
-                 "5 exits connected",               
-                 "connect exits on opposing sides",     
-                 "connect exits on 3 differnt sides",
-                 "5 dices in central space",
-                 "3x3 routes",                 
-                 "1 route in each corner",     
-                 "7 routes in a row or coloumn"];
-
-  var goals_3 = ["3 special routes used",
-                 "1 circle",
-                 "1 village, 1 factory, 1 university",  
-                 "2 village, 2 factory, 2 university", 
-                 "4 stations linked",              
-                 "3 villages"
-                 ];
-
-  
-  switch (num) {
-    case 1:
-      return goals_1[(Math.floor( Math.random() * goals_1.length))]; break;
-    case 2:
-      return goals_2[(Math.floor( Math.random() * goals_2.length))]; break;
-    case 3:
-      return goals_3[(Math.floor( Math.random() * goals_3.length))]; break;
-
-    default: return 0; break;
-  }
-
-}
-
-function get_goal_special() { 
-  var goal_desert = ["2x2 Cacti",
-                     "4x1 Cacti",
-                     "3 Oasis to the same network"
-                    ];  
-  var goal_canyon = ["Spend at least 6 Bridge Points",
-                     "Cross the same Canyon 3 times with the same path",
-                     "Draw a Canyon with both ends connected to the edge and through Central Area"
-                    ];
-  var goal_forest = ["5 connected Forests",
-                     "2x2 Forest",
-                     "Cross the same Forest twice"
-                    ];
-  var goal_trail  = ["5 Trails in Central Area",
-                     "3 Stations connected by Trails",
-                     "Trail circle "
-                    ];
-  var goal_river  = ["Cross the same River twice",
-                     "3 stations orthogonally adjacent to a River",
-                     "connect two exits with a route that goes over a river"
-                    ];
-                    
-  var expansion_lg = document.getElementById('sel_expansion').value;
-  
-  if (expansion_lg == "desert"){
-    return goal_desert[(Math.floor( Math.random() * goal_desert.length))];
-  }  
-  else if (expansion_lg == "canyon_2"){
-    return goal_canyon[(Math.floor( Math.random() * goal_canyon.length))];
-  }
-  else if (expansion_lg == "forest"){
-    return goal_forest[(Math.floor( Math.random() * goal_forest.length))];
-  }
-  else if (expansion_lg == "trail"){
-    return goal_trail[(Math.floor( Math.random() * goal_trail.length))];
-  }
-  else if (expansion_lg == "river"){
-    return goal_river[(Math.floor( Math.random() * goal_river.length))];
-  }
-  else {
-    return get_goal(3);
-  }
-}
-
-function set_round_limit() {
-  var expansion_lg = document.getElementById('sel_expansion').value;
-  
-  if ((expansion_lg == "engineer_renovation") || ( expansion_lg == "desert")|| ( expansion_lg == "river")|| ( expansion_lg == "canyon")|| ( expansion_lg == "forest")|| ( expansion_lg == "trail")){
-    document.getElementById("round_limit").value = "6";
-  }
-  else {
-    document.getElementById("round_limit").textContent = "7";
-  }
-}  
-
-function reset() {
-
-  for (i = 1; i <= 4; i++) {
-    document.getElementById("goal_"+i).textContent = " ";
-  }
-  
-  document.getElementById("round_limit").textContent = " ";
-  
-  for (i = 1; i <= 7; i++) {
-      for (j = 1; j <= 6; j++) {
-        document.getElementById("i_"+i+"_"+j).src = "resources/Dice_Preset_empty.svg";
-      }
-  }
-  
-}
-
-function Sleep(milliseconds) {
- return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
-
-document.getElementById("roll_dice_r1").onclick  = function(){roll_row(1)};
-document.getElementById("roll_dice_r2").onclick  = function(){roll_row(2)};
-document.getElementById("roll_dice_r3").onclick  = function(){roll_row(3)};
-document.getElementById("roll_dice_r4").onclick  = function(){roll_row(4)};
-document.getElementById("roll_dice_r5").onclick  = function(){roll_row(5)};
-document.getElementById("roll_dice_r6").onclick  = function(){roll_row(6)};
-document.getElementById("roll_dice_r7").onclick  = function(){roll_row(7)};
-
-document.getElementById("set_row_1").onclick  = function(){set_row(1)};
-document.getElementById("set_row_2").onclick  = function(){set_row(2)};
-document.getElementById("set_row_3").onclick  = function(){set_row(3)};
-document.getElementById("set_row_4").onclick  = function(){set_row(4)};
-document.getElementById("set_row_5").onclick  = function(){set_row(5)};
-document.getElementById("set_row_6").onclick  = function(){set_row(6)};
-document.getElementById("set_row_7").onclick  = function(){set_row(7)};
-
-document.getElementById("roll_goal_1").onclick   = roll_goal_1;
-document.getElementById("roll_goal_2").onclick   = roll_goal_2;
-document.getElementById("roll_goal_3").onclick   = roll_goal_3;
-//document.getElementById("roll_goal_4").onclick   = roll_goal_4;
-document.getElementById("reset").onclick         = reset;
+document.getElementById("show_dice").onclick = show;
 
 
 var Dice_Normal_N1_1 = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB3aWR0aD0iNzgiCiAgIGhlaWdodD0iNzgiCiAgIHZpZXdCb3g9IjAgMCAyMC42Mzc0OTkgMjAuNjM3NDk5IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc2OTA1IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIwLjkyLjMgKDI0MDU1NDYsIDIwMTgtMDMtMTEpIgogICBzb2RpcG9kaTpkb2NuYW1lPSJEaWNlX05vcm1hbF9OMV8xLnN2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczY4OTkiIC8+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJiYXNlIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzY2NjY2NiIKICAgICBib3JkZXJvcGFjaXR5PSIxLjAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnpvb209IjMuOTU5Nzk4IgogICAgIGlua3NjYXBlOmN4PSIxMzYuNzg0MjUiCiAgICAgaW5rc2NhcGU6Y3k9IjYwLjUwNTMyNiIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ibGF5ZXIxIgogICAgIHNob3dncmlkPSJmYWxzZSIKICAgICB1bml0cz0icHgiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIyNTYwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEzNzciCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIiAvPgogIDxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTY5MDIiPgogICAgPHJkZjpSREY+CiAgICAgIDxjYzpXb3JrCiAgICAgICAgIHJkZjphYm91dD0iIj4KICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KICAgICAgICA8ZGM6dHlwZQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+CiAgICAgICAgPGRjOnRpdGxlPjwvZGM6dGl0bGU+CiAgICAgIDwvY2M6V29yaz4KICAgIDwvcmRmOlJERj4KICA8L21ldGFkYXRhPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkxheWVyIDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTI3Ni4zNjI1MSkiPgogICAgPHBhdGgKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2Njc2Nzc2NjY3NjY3NjY2NjY2NjY2NzY2NjY2NjY2NjY2NjY2NjY3Nzc2Njc3Nzc3Njc3NjY2NzY2Nzc3Nzc2NjY3NjY2Njc2NjIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgIGlkPSJwYXRoMjQyNi05LTctNSIKICAgICAgIGQ9Im0gMi41NDc2OTk5LDI5Ni4yNDM3NSBjIC0wLjk2NywtMC41ODM0IC0xLjQwMTU1OTksLTEuMDQxNyAtMS45MDA2NTk5LC0yLjAwNDYgTCAwLDI5Mi45OTA4MSB2IC02LjAzMTM0IGMgMCwtNi42NTg0NiAwLjA3MTIsLTcuMDc2NzQgMS40NTk0LC04LjU0NjUyIDEuNDgyMDQsLTEuNTY5NCAxLjg5NTU4LC0xLjY0ODUyIDguNjE2MywtMS42NDg1MiA1LjM1NTkxOSwwIDYuMTI2MTc5LDAuMDQ3NCA2Ljk2MTY3OSwwLjQyODY4IDEuMTU2NjQsMC41Mjc4IDIuNDg2MDYsMi4wNDcwOCAyLjg0NTIsMy4yNTE1IDAuMzQ2NjgsMS4xNjIxNCAwLjM2MzI0LDExLjY2NjYyIDAuMDE4LDEyLjkwNjY4IC0wLjMwMDcyLDEuMDg4NjQgLTEuNjE4MzYsMi41OTY3NiAtMi43OTU2OCwzLjIwMDE4IC0wLjc5OTgyLDAuNDA5OTYgLTEuNDEwMDYsMC40NDg1NCAtNy4wOTA1NiwwLjQ0ODU0IEggMy43OTg4OTk4IFogbSA1LjAxNzc1OTgsLTYuMDUwNDggYyAtMC4wODM2LC0zLjM1OTc2IC0wLjE1MjYsLTcuNjEyMzggLTAuMTUzMiwtOS40NTAyNCBsIC00LjU5OWUtNCwtMy4zNDE1NiAtMS43MDAxNiwwLjA4NjIgYyAtMi4wMDk3NCwwLjEwMiAtMy4yMzIwMTk5LDAuNzcxMzQgLTQuMjYyMTk5OSwyLjMzNDIgbCAtMC42Mzg5Mzk5LDAuOTY5MzIgLTAuMDY5OCw1LjcxMjYgYyAtMC4wNzc4LDYuMzc4NTIgMC4wMzIsNy4wMjQ0MiAxLjQwNDQ1OTksOC4zMzE4MiAxLjIyMDU0LDEuMTYxODQgMS45NzQ1MTk5LDEuNDQ2NzQgMy44NTYwOTk5LDEuNDU2OTQgbCAxLjcxNjQ3OTgsMC4wMDggeiBtIDQuMjQ3NDQwMywzLjcwMzEgYyAwLC0xLjMyMzA2IDAuMDY5LC01LjU2ODcyIDAuMTUzNiwtOS40MzQ4MiBsIDAuMTUzNTk5LC03LjAyOTI2IC0xLjk0ODQ3OSwwLjA2ODIgLTEuOTQ4NDYwNCwwLjA2ODIgLTAuMDYwMiw5LjM2NjYyIC0wLjA2MDYsOS4zNjY2MiBoIDEuODU1NjIgMS44NTU2MTk0IHogbSAtMi4wNDEyMjA0LDAuNTA5OTQgYyAwLjA0MTQsLTAuNTU3MyAwLjE3NjYwMDEsLTAuOTg3MSAwLjMwMzkyMDQsLTAuOTU1MDggMC4zNDgwOCwwLjA4NzQgMC4yODM2OCwxLjc0NzIgLTAuMDcyMiwxLjg2NjUgLTAuMjI2NjgwNCwwLjA3NiAtMC4yODU1MjAzLC0wLjE1NTggLTAuMjMxNzYwNCwtMC45MTE0MiB6IG0gLTAuMDQxNCwtMi43MDA0MiBjIDAuMDA0LC0wLjY2OTEyIDAuMjY4MDgsLTEuNDU0NDYgMC40ODcxMDA0LC0xLjQ1NDQ2IDAuMTEyNiwwIDAuMjA0NiwwLjQxODg4IDAuMjA0NiwwLjkzMDg2IDAsMC42NzIyOCAtMC4wOTY2LDAuOTMwODQgLTAuMzQ3NiwwLjkzMDg0IC0wLjE5MTIwMDQsMCAtMC4zNDYyNDA0LC0wLjE4MzQgLTAuMzQ0NDAwNSwtMC40MDcyNCB6IG0gMC4yMjg1MTk4LC0zLjU0ODg0IGMgMCwtMC41MTE5NiAwLjEwNDQwMDYsLTAuOTMwODYgMC4yMzE3MjA2LC0wLjkzMDg2IDAuMTI3NCwwIDAuMjMxNzYsMC40MTg4OCAwLjIzMTc2LDAuOTMwODYgMCwwLjUxMTk2IC0wLjEwNDQsMC45MzA4NiAtMC4yMzE3NiwwLjkzMDg2IC0wLjEyNzQsMCAtMC4yMzE3MjA2LC0wLjQxODg4IC0wLjIzMTcyMDYsLTAuOTMwODYgeiBtIDAuMDE4LC0zLjA4MzQyIGMgMC4wMTM5OTksLTAuNzY1OTggMC4wNjEyLC0wLjg4NDA2IDAuMjE1NjM5NiwtMC41MjM1OCAwLjI3NzcyLDAuNjQ4OTQgMC4yNzc3MiwxLjUxMjYgMCwxLjUxMjYgLTAuMTI3NCwwIC0wLjIyNDM1OTcsLTAuNDQ1MDQgLTAuMjE1NjM5NiwtMC45ODkwMiB6IE0gOS44Mzk4LDI4Mi4zMTYyNyBjIC0wLjA5MzQsLTAuNDI3NzQgLTAuMDUzOCwtMC44MjU0IDAuMDk3NCwtMC45NzczOCAwLjE4NTgsLTAuMTg2NiAwLjI1NTIsMC4wMTIgMC4yNTUyLDAuNzIxMTQgMCwxLjE1NzM2IC0wLjEzNDIsMS4yNTQ4OCAtMC4zNTI2ODAyLDAuMjU2MzYgeiBtIC0wLjExMDgwMDEsLTMuMTE4NiBjIDAsLTAuNTY4ODYgMC4xMDQ4MDAyLC0wLjgxNDUgMC4zNDc2MDAxLC0wLjgxNDUgMC4yNDI3NiwwIDAuMzQ3NiwwLjI0NTY0IDAuMzQ3NiwwLjgxNDUgMCwwLjU2ODg0IC0wLjEwNDgsMC44MTQ0OCAtMC4zNDc2LDAuODE0NDggLTAuMjQyNzYsMCAtMC4zNDc2MDAxLC0wLjI0NTY0IC0wLjM0NzYwMDEsLTAuODE0NDggeiBtIDYuODc1ODc5MSwxNi42MTc5NCBjIDEuMTk1MTIsLTAuNTgxMjYgMi4yMjUyNiwtMS43Njk5NCAyLjU4Nzk4LC0yLjk4NjI0IDAuNDI1NzgsLTEuNDI3OTYgMC4zNTQwNCwtMTAuOTg3IC0wLjA5MDIsLTEyLjA1NTg0IC0wLjkyMTg4LC0yLjIxNjY0IC0yLjU3NDg4LC0zLjMyMTE4IC00Ljk3MDI5OSwtMy4zMjExOCBIIDEyLjc0MDEgbCAtNi4wOWUtNCw0LjM2MzMyIGMgLTIuOTFlLTQsMi4zOTk4MiAtMC4wNjksNi42NDEgLTAuMTUyNiw5LjQyNDggbCAtMC4xNTIyLDUuMDYxNDQgaCAxLjU4NTEyIGMgMS4xMzQ0NiwwIDEuODY5NDQsLTAuMTM4MiAyLjU4NTA4LC0wLjQ4NjMgeiIKICAgICAgIHN0eWxlPSJkaXNwbGF5OmlubGluZTtmaWxsOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMDU4MDQxODEiIC8+CiAgPC9nPgo8L3N2Zz4K";
