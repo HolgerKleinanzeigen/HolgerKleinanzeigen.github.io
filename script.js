@@ -29,15 +29,15 @@ async function roll_row(nr_row) {
     document.getElementById("i_"+nr_row+"_"+k).src = "resources/Dice_Preset_empty.svg";
   }
 
-  await Sleep(300);
+  await Sleep(100);
   roll[0] = roll_dice(nr_row,1,1,"Normal");
-  await Sleep(300);
+  await Sleep(100);
   roll[1] = roll_dice(nr_row,2,1,"Normal");
-  await Sleep(300);
+  await Sleep(100);
   roll[2] = roll_dice(nr_row,3,2,"Normal");
-  await Sleep(300);
+  await Sleep(100);
   roll[3] = roll_dice(nr_row,4,3,"Normal");
-  await Sleep(300);
+  await Sleep(100);
   roll[4] = "0";
   roll[5] = "0";
   
@@ -57,22 +57,22 @@ async function roll_row(nr_row) {
     case "engineer_special_3":
       roll[3] = roll_dice(nr_row,4,2,"Engineer"); break;
     case "desert":
-      roll[4] = roll_dice(nr_row,5,1,"Desert");   await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,1,"Desert");   await Sleep(100);
       roll[5] = roll_dice(nr_row,6,1,"Desert");   break;
     case "canyon_1":
-      roll[4] = roll_dice(nr_row,5,1,"Canyon");   await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,1,"Canyon");   await Sleep(100);
       roll[5] = roll_dice(nr_row,6,1,"Canyon");   break;
     case "canyon_2":
-      roll[4] = roll_dice(nr_row,5,2,"Canyon");   await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,2,"Canyon");   await Sleep(100);
       roll[5] = roll_dice(nr_row,6,2,"Canyon");   break;
     case "river":
-      roll[4] = roll_dice(nr_row,5,1,"River");    await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,1,"River");    await Sleep(100);
       roll[5] = roll_dice(nr_row,6,1,"River");    break;
     case "forest":
-      roll[4] = roll_dice(nr_row,5,1,"Forest");   await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,1,"Forest");   await Sleep(100);
       roll[5] = roll_dice(nr_row,6,1,"Forest");   break;
     case "trail":
-      roll[4] = roll_dice(nr_row,5,1,"Trail");    await Sleep(300);
+      roll[4] = roll_dice(nr_row,5,1,"Trail");    await Sleep(100);
       roll[5] = roll_dice(nr_row,6,1,"Trail");    break;
       
     default: break;
@@ -280,6 +280,9 @@ function get_goal_special() {
   }
   else if (expansion_lg == "trail"){
     return goal_trail[(Math.floor( Math.random() * goal_trail.length))];
+  }
+  else if (expansion_lg == "river"){
+    return goal_river[(Math.floor( Math.random() * goal_river.length))];
   }
   else {
     return get_goal(3);
