@@ -47,7 +47,7 @@ async function roll_row(nr_row) {
     case "engineer_renovation":
       roll[4] = roll_dice(nr_row,5,1,"Engineer"); break;
     case "engineer_separation_1":
-      roll[1] = roll_dice(nr_row,2,2,"Engineer"); break;
+      roll[1] = roll_dice(nr_row,2,3,"Engineer"); break;
     case "engineer_separation_2":
       roll[2] = roll_dice(nr_row,3,3,"Engineer"); break;
     case "engineer_special_1":
@@ -100,16 +100,20 @@ function set_row(nr_row) {
   switch (expansion) {
     case "engineer_renovation":
       set_dice(nr_row,5,1,"Engineer");  break;
+      
     case "engineer_separation_1":
-      set_dice(nr_row,2,2,"Engineer");  break;
+      set_dice(nr_row,2,3,"Engineer");  break;
+      
     case "engineer_separation_2":
       set_dice(nr_row,3,3,"Engineer");  break;
+      
     case "engineer_special_1":
       set_dice(nr_row,2,2,"Engineer");  break;
     case "engineer_special_2":
        set_dice(nr_row,3,2,"Engineer"); break;
     case "engineer_special_3":
       set_dice(nr_row,4,2,"Engineer");  break;
+      
     case "desert":
       set_dice(nr_row,5,1,"Desert");
       set_dice(nr_row,6,1,"Desert");    break;
@@ -221,7 +225,7 @@ function get_goal(num) {
   var goals_2 = ["3 exits connected",              
                  "5 exits connected",               
                  "connect exits on opposing sides",     
-                 "connect exits on 3 differnt sides",
+                 "connect exits on 3 different sides",
                  "5 dices in central space",
                  "3x3 routes",                 
                  "1 route in each corner",     
