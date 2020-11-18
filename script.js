@@ -217,16 +217,21 @@ function roll_goal_3() {
 
 function get_goal(num) { 
 
-  var goals_1 = ["6 highways",
+  var goals_1 = ["5 highways",
+                 "6 highways",
+                 "7 highways",
+                 "5 railways",
                  "6 railways",
-                 "6 railways",
+                 "7 railways",
+                 "3 highways + 3 railways",
+                 "4 highways + 4 railways",
                  "5 highways + 5 railways"];
 
   var goals_2 = ["3 exits connected",              
                  "5 exits connected",               
                  "connect exits on opposing sides",     
                  "connect exits on 3 different sides",
-                 "5 dices in central space",
+                 "5 routes in central space",
                  "3x3 routes",                 
                  "1 route in each corner",     
                  "7 routes in a row or coloumn"];
